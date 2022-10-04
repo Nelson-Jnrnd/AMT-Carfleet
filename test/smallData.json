@@ -1,0 +1,28 @@
+{
+  "data": {
+    "boards": [
+      {
+        "items": [
+          {
+            "id": "939948275",
+            "name": "GE 123201",
+            "column_values": [
+              {
+                "title": "Modèle",
+                "text": "Volkswagen California"
+              },
+              {
+                "title": "Nom/prénom",
+                "text": "Nelson De Bleser"
+              }, {
+                "title": "Continent",
+                "text": "Europe"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "account_id": 7650377
+}
