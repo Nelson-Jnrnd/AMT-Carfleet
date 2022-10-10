@@ -2,7 +2,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import org.junit.jupiter.api.Test;
-import javax.print.DocFlavor;
 import java.io.File;
 import java.io.IOException;
 
@@ -19,8 +18,6 @@ public class TestCar extends Data {
     public void serialize_ValidJson_Success() {
         return;
     }
-
-
 
 
 }
