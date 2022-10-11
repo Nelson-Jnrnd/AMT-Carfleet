@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class TestCar extends Data {
+public class TestCar {
     ObjectMapper objectMapper = new ObjectMapper();
 
     public TestCar() throws IOException {
-        Example car = objectMapper.readValue(new File("test/smallData.json"), Example.class);
+        Car car = objectMapper.readValue(new File("test/smallData.json"), Car.class);
         assert car.getAccountId() == 7650377;
     }
 
