@@ -21,7 +21,7 @@ public class TestCar {
 
     @BeforeClass
     public static void beforeClass() throws IOException {
-        testCarData = MAPPER.readValue(new File("test/smallData.json"), Car.class);
+        testCarData = MAPPER.readValue(new File("test/data/smallData.json"), Car.class);
     }
 
     @Test
