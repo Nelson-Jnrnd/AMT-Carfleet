@@ -13,20 +13,20 @@ import java.util.Map;
 @JsonPropertyOrder({
         "boards"
 })
-class Data {
+class Data<T extends Item> {
 
     @JsonProperty("boards")
-    private List<Board> boards = null;
+    private List<Board<T>> boards = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("boards")
-    public List<Board> getBoards() {
+    public List<Board<T>> getBoards() {
         return boards;
     }
 
     @JsonProperty("boards")
-    public void setBoards(List<Board> boards) {
+    public void setBoards(List<Board<T>> boards) {
         this.boards = boards;
     }
 
@@ -46,20 +46,20 @@ class Data {
 @JsonPropertyOrder({
         "items"
 })
-class Board {
+class Board<T extends Item> {
 
     @JsonProperty("items")
-    private List<Item> items = null;
+    private List<T> items = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("items")
-    public List<Item> getItems() {
+    public List<T> getItems() {
         return items;
     }
 
     @JsonProperty("items")
-    public void setItems(List<Item> items) {
+    public void setItems(List<T> items) {
         this.items = items;
     }
 
@@ -123,15 +123,15 @@ abstract class Item {
 }
 
 class LowerItem extends Item {
-    @JsonProperty("lower_items")
+    @JsonProperty("column_values")
     private List<ColumnValue> columnValues = null;
 
-    @JsonProperty("lower_items")
+    @JsonProperty("column_values")
     public List<ColumnValue> getColumnValues() {
         return columnValues;
     }
 
-    @JsonProperty("lower_items")
+    @JsonProperty("column_values")
     public void setColumnValues(List<ColumnValue> columnValues) {
         this.columnValues = columnValues;
     }
@@ -139,15 +139,15 @@ class LowerItem extends Item {
 
 
 class UpperItem extends Item {
-    @JsonProperty("upper_items")
+    @JsonProperty("subitems")
     private List<LowerItem> subitems = null;
 
-    @JsonProperty("upper_items")
+    @JsonProperty("subitems")
     public List<LowerItem> getSubitems() {
         return subitems;
     }
 
-    @JsonProperty("upper_items")
+    @JsonProperty("subitems")
     public void setSubitems(List<LowerItem> subitems) {
         this.subitems = subitems;
     }

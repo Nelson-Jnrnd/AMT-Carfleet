@@ -17,19 +17,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Car {
 
     @JsonProperty("data")
-    private Data data;
+    private Data<LowerItem> data;
     @JsonProperty("account_id")
     private Integer accountId;
     @JsonIgnore
     private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("data")
-    public Data getData() {
+    public Data<LowerItem> getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(Data data) {
+    public void setData(Data<LowerItem> data) {
         this.data = data;
     }
 

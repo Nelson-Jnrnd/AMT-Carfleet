@@ -11,19 +11,19 @@ import java.util.Map;
 })
 public class Driver {
     @JsonProperty("data")
-    private Data data;
+    private Data<UpperItem> data;
     @JsonProperty("account_id")
     private Integer accountId;
     @JsonIgnore
     private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("data")
-    public Data getData() {
+    public Data<UpperItem> getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(Data data) {
+    public void setData(Data<UpperItem> data) {
         this.data = data;
     }
 
