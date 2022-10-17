@@ -5,15 +5,15 @@ import java.io.IOException;
 
 public class Car extends Entity {
     @JsonProperty("data")
-    private Data<LowerItem> data;
+    private CarData data;
 
     @JsonProperty("data")
-    public Data<LowerItem> getData() {
+    public CarData getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(Data<LowerItem> data) {
+    public void setData(CarData data) {
         this.data = data;
     }
 

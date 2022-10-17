@@ -5,16 +5,16 @@ import java.io.IOException;
 
 public class Driver extends Entity {
     @JsonProperty("data")
-    private Data<UpperItem> data;
+    private DriverData data;
 
 
     @JsonProperty("data")
-    public Data<UpperItem> getData() {
+    public DriverData getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(Data<UpperItem> data) {
+    public void setData(DriverData data) {
         this.data = data;
     }
 

@@ -12,6 +12,83 @@ import java.util.Map;
 @JsonPropertyOrder({
         "boards"
 })
+class FleetData {
+    @JsonProperty("boards")
+    private List<Groups> boards = null;
+
+    @JsonProperty("boards")
+    public List<Groups> getBoards() {
+        return boards;
+    }
+
+    @JsonProperty("boards")
+    public void setBoards(List<Groups> boards) {
+        this.boards = boards;
+    }
+}
+
+@JsonInclude(JsonInclude.Include.NON_NULL) // Inclu seulement les champs non nulls
+@JsonPropertyOrder({
+        "groups"
+})
+class Groups {
+    @JsonProperty("groups")
+    private List<LowerItem> items = null;
+
+    @JsonProperty("groups")
+    public List<LowerItem> getItems() {
+        return items;
+    }
+
+    @JsonProperty("groups")
+    public void setBoards(List<LowerItem> items) {
+        this.items = items;
+    }
+}
+
+
+@JsonInclude(JsonInclude.Include.NON_NULL) // Inclu seulement les champs non nulls
+@JsonPropertyOrder({
+        "boards"
+})
+class DriverData {
+    @JsonProperty("boards")
+    private List<Board<UpperItem>> boards = null;
+
+    @JsonProperty("boards")
+    public List<Board<UpperItem>> getBoards() {
+        return boards;
+    }
+
+    @JsonProperty("boards")
+    public void setBoards(List<Board<UpperItem>> boards) {
+        this.boards = boards;
+    }
+}
+
+@JsonInclude(JsonInclude.Include.NON_NULL) // Inclu seulement les champs non nulls
+@JsonPropertyOrder({
+        "boards"
+})
+class CarData {
+    @JsonProperty("boards")
+    private List<Board<LowerItem>> boards = null;
+
+    @JsonProperty("boards")
+    public List<Board<LowerItem>> getBoards() {
+        return boards;
+    }
+
+    @JsonProperty("boards")
+    public void setBoards(List<Board<LowerItem>> boards) {
+        this.boards = boards;
+    }
+}
+
+@JsonInclude(JsonInclude.Include.NON_NULL) // Inclu seulement les champs non nulls
+@JsonPropertyOrder({
+        "boards"
+})
 class Data<T extends Item> {
 
     @JsonProperty("boards")
