@@ -85,5 +85,23 @@ public class TestDriver {
         }
     }
 
+    @Test
+    public void DeserializeJsonMissingMandatoryFieldsShouldThrowException() {
+        TestMandatoryField(new File("test/data/dataDriverMissingAccountId.json"));
+        TestMandatoryField(new File("test/data/dataDriverEmptyId.json"));
+        TestMandatoryField(new File("test/data/dataDriverMissingId.json"));
+        TestMandatoryField(new File("test/data/dataDriverEmptyName.json"));
+        TestMandatoryField(new File("test/data/dataDriverMissingName.json"));
+    }
+
+    public void TestMandatoryField(File json)
+    {
+        try {
+            Driver.readDriver(json);
+            assert false;
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
 
 }
