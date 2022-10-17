@@ -16,7 +16,6 @@ public class EntityFactory {
      * @return Car
      */
     static Car toCar(File f) {
-
         try {
             checkJason(f);
             ObjectMapper mapper = new ObjectMapper();
@@ -30,7 +29,6 @@ public class EntityFactory {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
         return null;
     }
 
@@ -40,7 +38,6 @@ public class EntityFactory {
      * @return Car
      */
     static Driver toDriver (File f) {
-
         try {
             checkJason(f);
             ObjectMapper mapper = new ObjectMapper();
@@ -53,7 +50,6 @@ public class EntityFactory {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
         return null;
     }
 
