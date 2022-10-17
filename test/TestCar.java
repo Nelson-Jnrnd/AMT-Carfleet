@@ -59,5 +59,47 @@ public class TestCar {
         }
     }
 
+    @Test
+    public void DeserializeEmptyJsonShouldThrowException() {
+        try {
+            MAPPER.readValue(new File("test/data/empty.json"), Car.class);
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
 
+    @Test
+    public void DeserializeBadJsonShouldThrowException() {
+        try {
+            MAPPER.readValue(new File("test/data/dataCarMissingBoard.json"), Car.class);
+            assert false;
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+
+        try {
+            MAPPER.readValue(new File("test/data/dataCarMissingData.json"), Car.class);
+            assert false;
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
+
+    @Test
+    public void DeserializeJsonMissingMandatoryFieldsShouldThrowException() {
+        TestMandatoryField(new File("test/data/dataCarMissingAccountId.json"));
+        TestMandatoryField(new File("test/data/dataCarEmptyId.json"));
+        TestMandatoryField(new File("test/data/dataCarMissingId.json"));
+        TestMandatoryField(new File("test/data/dataCarEmptyName.json"));
+        TestMandatoryField(new File("test/data/dataCarMissingName.json"));
+    }
+    public void TestMandatoryField(File json)
+    {
+        try {
+            MAPPER.readValue(json, Car.class);
+            assert false;
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
 }
