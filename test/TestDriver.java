@@ -20,8 +20,8 @@ public class TestDriver {
     private static Driver testDriverData;
 
     @BeforeClass
-    public static void beforeClass() throws IOException {
-        testDriverData = Driver.readDriver(new File("test/data/smallDataDriver.json"));
+    public static void beforeClass() {
+        testDriverData = EntityFactory.toDriver(new File("test/data/smallDataDriver.json"));
     }
 
     @Test
@@ -64,8 +64,8 @@ public class TestDriver {
     @Test
     public void DeserializeEmptyJsonShouldThrowException() {
         try {
-            Driver.readDriver(new File("test/data/empty.json"));
-        } catch (IOException e) {
+            EntityFactory.toDriver(new File("test/data/empty.json"));
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
     }
@@ -97,9 +97,8 @@ public class TestDriver {
     public void TestMandatoryField(File json)
     {
         try {
-            Driver.readDriver(json);
-            assert false;
-        } catch (IOException e) {
+            EntityFactory.toDriver(json);
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
     }

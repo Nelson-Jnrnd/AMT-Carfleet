@@ -16,19 +16,15 @@ public class EntityFactory {
      * @return Car
      */
     static Car toCar(File f) {
-        checkEmpty(f);
-        ObjectMapper mapper = new ObjectMapper();
+
         try {
+            checkJason(f);
+            ObjectMapper mapper = new ObjectMapper();
             Car c = mapper.readValue(f, Car.class);
 
             // Check account id
             if (c.getAccountId() == null || c.getAccountId() < 0)
                 throwError();
-
-            // Check car id
-            contains(f,"id");
-            // Check car name
-            contains(f,"name");
 
             return c;
         } catch (IOException e) {
@@ -43,10 +39,34 @@ public class EntityFactory {
      * @param f file
      * @return Car
      */
-    static Driver toDriver (File f) throws IOException {
-        checkEmpty(f);
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(f, Driver.class);
+    static Driver toDriver (File f) {
+
+        try {
+            checkJason(f);
+            ObjectMapper mapper = new ObjectMapper();
+            Driver d =  mapper.readValue(f, Driver.class);
+            // Check account id
+            if (d.getAccountId() == null || d.getAccountId() < 0)
+                throwError();
+
+            return d;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * Base checks for Entity integrity
+     * @param f target jason file
+     */
+    private static void checkJason(File f) {
+            checkEmpty(f);
+            // Check car id
+            contains(f,"id");
+            // Check car name
+            contains(f,"name");
     }
 
     private static void checkEmpty (File f) {
