@@ -1,5 +1,8 @@
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Driver extends Entity {
     @JsonProperty("data")
     private Data<UpperItem> data;
@@ -13,5 +16,10 @@ public class Driver extends Entity {
     @JsonProperty("data")
     public void setData(Data<UpperItem> data) {
         this.data = data;
+    }
+
+
+    public static Driver readDriver(File file) throws IOException {
+        return MAPPER.readValue(file, Driver.class);
     }
 }
