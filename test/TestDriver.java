@@ -70,5 +70,20 @@ public class TestDriver {
         }
     }
 
+    @Test
+    public void DeserializeBadJsonShouldThrowException() {
+        try {
+            Driver.readDriver(new File("test/data/dataDriverMissingBoard.json"));
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+
+        try {
+            Driver.readDriver(new File("test/data/dataDriverMissingData.json"));
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
+
 
 }

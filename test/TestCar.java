@@ -68,6 +68,20 @@ public class TestCar {
         }
     }
 
+    public void DeserializeBadJsonShouldThrowException() {
+        try {
+            MAPPER.readValue(new File("test/data/dataCarMissingBoard.json"), Car.class);
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+
+        try {
+            MAPPER.readValue(new File("test/data/dataCarMissingData.json"), Car.class);
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
+
 
 
 }
