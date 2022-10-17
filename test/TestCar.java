@@ -59,5 +59,15 @@ public class TestCar {
         }
     }
 
+    @Test
+    public void DeserializeEmptyJsonShouldThrowException() {
+        try {
+            MAPPER.readValue(new File("test/data/empty.json"), Car.class);
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
+
+
 
 }

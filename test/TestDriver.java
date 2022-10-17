@@ -61,5 +61,14 @@ public class TestDriver {
         }
     }
 
+    @Test
+    public void DeserializeEmptyJsonShouldThrowException() {
+        try {
+            Driver.readDriver(new File("test/data/empty.json"));
+        } catch (IOException e) {
+            assert e.getMessage().equals("No content to map due to end-of-input");
+        }
+    }
+
 
 }
