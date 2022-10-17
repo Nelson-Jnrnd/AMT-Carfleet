@@ -20,8 +20,8 @@ public class TestCar {
     private static Car testCarData;
 
     @BeforeClass
-    public static void beforeClass() throws IOException {
-        testCarData = MAPPER.readValue(new File("test/data/smallData.json"), Car.class);
+    public static void beforeClass() {
+        testCarData = EntityFactory.toCar(new File("test/data/smallData.json"));
     }
 
     @Test
@@ -62,27 +62,27 @@ public class TestCar {
     @Test
     public void DeserializeEmptyJsonShouldThrowException() {
         try {
-            MAPPER.readValue(new File("test/data/empty.json"), Car.class);
-        } catch (IOException e) {
+            EntityFactory.toCar(new File("test/data/empty.json"));
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
     }
 
     @Test
     public void DeserializeBadJsonShouldThrowException() {
+
         try {
-            MAPPER.readValue(new File("test/data/dataCarMissingBoard.json"), Car.class);
-            assert false;
-        } catch (IOException e) {
+            EntityFactory.toCar(new File("test/data/dataCarMissingBoard.json"));
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
 
         try {
-            MAPPER.readValue(new File("test/data/dataCarMissingData.json"), Car.class);
-            assert false;
-        } catch (IOException e) {
+            EntityFactory.toCar(new File("test/data/dataCarMissingData.json"));
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
+
     }
 
     @Test
@@ -96,9 +96,8 @@ public class TestCar {
     public void TestMandatoryField(File json)
     {
         try {
-            MAPPER.readValue(json, Car.class);
-            assert false;
-        } catch (IOException e) {
+            EntityFactory.toCar(json);
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
     }

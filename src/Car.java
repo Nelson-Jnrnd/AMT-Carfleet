@@ -13,5 +13,6 @@ public class Car extends Entity {
     public void setData(Data<LowerItem> data) {
         this.data = data;
     }
+
 }
 
