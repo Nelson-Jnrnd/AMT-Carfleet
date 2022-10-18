@@ -21,7 +21,7 @@ public class TestDriver {
 
     @BeforeClass
     public static void beforeClass() {
-        testDriverData = EntityFactory.toDriver(new File("test/data/smallDataDriver.json"));
+        testDriverData = EntityFactory.toDriver(new File("src/test/resources/smallDataDriver.json"));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class TestDriver {
     @Test
     public void DeserializeEmptyJsonShouldThrowException() {
         try {
-            EntityFactory.toDriver(new File("test/data/empty.json"));
+            EntityFactory.toDriver(new File("src/test/resources/empty.json"));
         } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
@@ -73,13 +73,13 @@ public class TestDriver {
     @Test
     public void DeserializeBadJsonShouldThrowException() {
         try {
-            Driver.readDriver(new File("test/data/dataDriverMissingBoard.json"));
+            Driver.readDriver(new File("src/test/resources/dataDriverMissingBoard.json"));
         } catch (IOException e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
 
         try {
-            Driver.readDriver(new File("test/data/dataDriverMissingData.json"));
+            Driver.readDriver(new File("src/test/resources/dataDriverMissingData.json"));
         } catch (IOException e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
@@ -87,11 +87,11 @@ public class TestDriver {
 
     @Test
     public void DeserializeJsonMissingMandatoryFieldsShouldThrowException() {
-        TestMandatoryField(new File("test/data/dataDriverMissingAccountId.json"));
-        TestMandatoryField(new File("test/data/dataDriverEmptyId.json"));
-        TestMandatoryField(new File("test/data/dataDriverMissingId.json"));
-        TestMandatoryField(new File("test/data/dataDriverEmptyName.json"));
-        TestMandatoryField(new File("test/data/dataDriverMissingName.json"));
+        TestMandatoryField(new File("src/test/resources/dataDriverMissingAccountId.json"));
+        TestMandatoryField(new File("src/test/resources/dataDriverEmptyId.json"));
+        TestMandatoryField(new File("src/test/resources/dataDriverMissingId.json"));
+        TestMandatoryField(new File("src/test/resources/dataDriverEmptyName.json"));
+        TestMandatoryField(new File("src/test/resources/dataDriverMissingName.json"));
     }
 
     public void TestMandatoryField(File json)

@@ -7,12 +7,9 @@ Les décisions prises le long du développement sont détaillées dans le wiki d
 
 Des exemples de données fournies par Carfleet sont disponible dans le dossier data.
 
-## Utilisation
-TBD
+## Tests unitaires
 
-## Tests
-
-### Tests unitaires
+### Cas limites
 Des tests spécifiques ont été réalisés pour tester que les fichiers json reçus soient correctement structurés. 
 Nous avons donc prévu des tests unitaires pour nos classes driver et car, en testant plusieurs cas de json non conforme.
 Nous contrôlons que les json reçu n'ont pas de d'objet manquant, que ce soit par exemple le Board, les Items, le champ Dataou encore

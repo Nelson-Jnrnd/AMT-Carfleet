@@ -20,7 +20,7 @@ public class TestCar {
 
     @BeforeClass
     public static void beforeClass() {
-        testCarData = EntityFactory.toCar(new File("test/data/smallData.json"));
+        testCarData = EntityFactory.toCar(new File("src/test/resources/smallData.json"));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class TestCar {
     @Test
     public void DeserializeEmptyJsonShouldThrowException() {
         try {
-            EntityFactory.toCar(new File("test/data/empty.json"));
+            EntityFactory.toCar(new File("src/test/resources/empty.json"));
         } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
@@ -71,13 +71,13 @@ public class TestCar {
     public void DeserializeBadJsonShouldThrowException() {
 
         try {
-            EntityFactory.toCar(new File("test/data/dataCarMissingBoard.json"));
+            EntityFactory.toCar(new File("src/test/resources/dataCarMissingBoard.json"));
         } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
 
         try {
-            EntityFactory.toCar(new File("test/data/dataCarMissingData.json"));
+            EntityFactory.toCar(new File("src/test/resources/dataCarMissingData.json"));
         } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
@@ -86,11 +86,11 @@ public class TestCar {
 
     @Test
     public void DeserializeJsonMissingMandatoryFieldsShouldThrowException() {
-        TestMandatoryField(new File("test/data/dataCarMissingAccountId.json"));
-        TestMandatoryField(new File("test/data/dataCarEmptyId.json"));
-        TestMandatoryField(new File("test/data/dataCarMissingId.json"));
-        TestMandatoryField(new File("test/data/dataCarEmptyName.json"));
-        TestMandatoryField(new File("test/data/dataCarMissingName.json"));
+        TestMandatoryField(new File("src/test/resources/dataCarMissingAccountId.json"));
+        TestMandatoryField(new File("src/test/resources/dataCarEmptyId.json"));
+        TestMandatoryField(new File("src/test/resources/dataCarMissingId.json"));
+        TestMandatoryField(new File("src/test/resources/dataCarEmptyName.json"));
+        TestMandatoryField(new File("src/test/resources/dataCarMissingName.json"));
     }
     public void TestMandatoryField(File json)
     {
