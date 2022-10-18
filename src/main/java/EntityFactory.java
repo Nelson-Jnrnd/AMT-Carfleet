@@ -1,23 +1,18 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
 
 
 public class EntityFactory {
 
     /**
-     * Car factory using jason file
+     * Car factory using json file
      * @param f file
      * @return Car
      */
     static Car toCar(File f) {
         try {
-            checkJason(f);
+            checkJson(f);
             ObjectMapper mapper = new ObjectMapper();
             Car c = mapper.readValue(f, Car.class);
 
@@ -33,13 +28,13 @@ public class EntityFactory {
     }
 
     /**
-     * Car factory using jason file
+     * Car factory using json file
      * @param f file
      * @return Car
      */
     static Driver toDriver (File f) {
         try {
-            checkJason(f);
+            checkJson(f);
             ObjectMapper mapper = new ObjectMapper();
             Driver d =  mapper.readValue(f, Driver.class);
             // Check account id
@@ -55,9 +50,9 @@ public class EntityFactory {
 
     /**
      * Base checks for Entity integrity
-     * @param f target jason file
+     * @param f target json file
      */
-    private static void checkJason(File f) {
+    private static void checkJson(File f) {
             checkEmpty(f);
             // Check car id
             contains(f,"id");
