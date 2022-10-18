@@ -17,12 +17,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
         "account_id"
 })
 public abstract class Entity {
-    private static final ObjectMapper MAPPER = new ObjectMapper();
     @JsonProperty("account_id")
     private Integer accountId;
-    @JsonIgnore
-    private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
 
     @JsonProperty("account_id")
     public Integer getAccountId() {
@@ -32,19 +28,5 @@ public abstract class Entity {
     @JsonProperty("account_id")
     public void setAccountId(Integer accountId) {
         this.accountId = accountId;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    public static Driver readDriver(File file) throws IOException {
-        return MAPPER.readValue(file, Driver.class);
     }
 }

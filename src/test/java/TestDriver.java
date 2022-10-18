@@ -73,14 +73,14 @@ public class TestDriver {
     @Test
     public void DeserializeBadJsonShouldThrowException() {
         try {
-            Driver.readDriver(new File("src/test/resources/dataDriverMissingBoard.json"));
-        } catch (IOException e) {
+            EntityFactory.toDriver(new File("src/test/resources/dataDriverMissingBoard.json"));
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
 
         try {
-            Driver.readDriver(new File("src/test/resources/dataDriverMissingData.json"));
-        } catch (IOException e) {
+            EntityFactory.toDriver(new File("src/test/resources/dataDriverMissingData.json"));
+        } catch (Error e) {
             assert e.getMessage().equals("No content to map due to end-of-input");
         }
     }
