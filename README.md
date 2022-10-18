@@ -7,6 +7,11 @@ Les décisions prises le long du développement sont détaillées dans le wiki d
 
 Des exemples de données fournies par Carfleet sont disponible dans le dossier data.
 
+### Auteurs
+* Nelson Jeanrenaud
+* Vincent Peer
+* Dimitri De Bleser
+
 ## Tests
 Les tests unitaires sont réalisés avec JUnit. Pour les exécuter, il suffit de lancer la commande suivante dans le dossier du projet:
 ```
