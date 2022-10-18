@@ -7,8 +7,11 @@ Les décisions prises le long du développement sont détaillées dans le wiki d
 
 Des exemples de données fournies par Carfleet sont disponible dans le dossier data.
 
-## Tests unitaires
-
+## Tests
+Les tests unitaires sont réalisés avec JUnit. Pour les exécuter, il suffit de lancer la commande suivante dans le dossier du projet:
+```
+mvn test
+```
 ### Cas limites
 Des tests spécifiques ont été réalisés pour tester que les fichiers json reçus soient correctement structurés. 
 Nous avons donc prévu des tests unitaires pour nos classes driver et car, en testant plusieurs cas de json non conforme.
